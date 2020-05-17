@@ -1,0 +1,11 @@
+body{
+    background:white !important;
+}
+.texts{
+	position: absolute;
+	top:36%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+
+}
