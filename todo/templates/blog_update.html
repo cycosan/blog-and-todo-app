@@ -1,0 +1,14 @@
+{% extends 'blog_base.html' %}
+{% block content%}
+    <div class="row mt-4">
+        <div class="col">
+            <h1>Add item</h1>
+            <form  method="post" action="" class="form-inline">
+                {% csrf_token %}
+                {{forms}}
+
+                <button type="submit" class="btn btn-primary mb-2">Update</button>
+        </form>
+        </div>
+    </div>
+{% endblock %}

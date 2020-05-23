@@ -28,7 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/',todo_views.index),
     path('todo/add_todo/',todo_views.add_todo),
-    path('todo/delete_todo/<int:todo_id>/', todo_views.delete_todo)
+    path('todo/delete_todo/<int:todo_id>/', todo_views.delete_todo),
+    path('todo/update_todo/<str:todo_id>',todo_views.update_todo,name="todo_update"),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

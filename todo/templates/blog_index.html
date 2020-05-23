@@ -3,9 +3,11 @@
     <div class="row mt-4">
         <div class="col">
             <h1>Add item</h1>
-            <form action="add_todo/" method="post" class="form-inline">
-            <input type="text" name="content" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Type here">
-             <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            <form  method="post" action="" class="form-inline">
+<!--            <input type="text" name="content" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Type here">-->
+                {% csrf_token %}
+                {{form.text}}
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </form>
         </div>
     </div>
@@ -14,11 +16,22 @@
         <div class="col">
             <ul class="list-group">
                 {% for todo in todos %}
-                    <li class="list-group-item ">{{ todo.text }}
-                        <div class="float-right">
-                            <form action="delete_todo/{{todo.id}}/" method="post">
+
+                    <li class="list-group-item ">
+                        {% if todo.completed == True %}
+                            <strike>   {{ todo.text }}(completed)</strike>
+                        {% else %}
+                            <span> {{todo.text}}</span>
+                        {% endif %}
+                        <div class="float-right form-inline" >
+                             <form action="update_todo/{{todo.id}}">
+                            <button type="submit" class="btn btn-sm btn btn-info">Update</button>
+                            </form>
+                            <form action="delete_todo/{{todo.id}}/" method="POST">
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
+
+
                         </div>
                     </li>
 
